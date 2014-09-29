@@ -27,7 +27,8 @@ random = SystemRandom().random
 
 
 class RauthSession(Session):
-    __attrs__ = Session.__attrs__ + ['service']
+    if hasattr(Session, '__attrs__'):
+    	__attrs__ = Session.__attrs__ + ['service']
 
     def __init__(self, service):
         #: A back reference to a service wrapper, if we're using one.
